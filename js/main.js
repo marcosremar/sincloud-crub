@@ -1,4 +1,3 @@
-//active the modal load by ajax
 $('body').on('click', '[data-toggle="modal"]', function(){
     var $this = $(this);
     $.get($(this).attr("href"), function(data, status){
@@ -11,8 +10,9 @@ $('body').on('click', '[data-toggle="modal"]', function(){
 
         $html = $(data).filter('.modal-footer').html();
         $($this.data("target")+' .modal-footer').html($html);
+
+    });
 });
-// build the message effect
 $(function(){
     $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
         $("#success-alert").slideUp(500);
