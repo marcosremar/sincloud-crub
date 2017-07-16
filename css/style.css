@@ -1,3 +1,7 @@
 .top-buffer {
   margin-top:20px;
 }
+.table .actions .btn{
+    width:40px !important;
+    margin-top:5px;
+}

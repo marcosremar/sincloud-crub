@@ -14,9 +14,11 @@
   </head>
   <body>
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <a class="navbar-brand" href="#">
-        <img src="./img/logo.png" width="110" alt="">
-    </a>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./img/logo.png" width="110" alt="">
+            </a>
+        </div>
     </nav>
     <div id="main" class="container-fluid">
             <!-- Message -->

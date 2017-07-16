@@ -36,7 +36,7 @@
 <table class="table table-striped table-hover top-buffer">
   <thead>
     <tr>
-      <th>#</th>
+      <!-- <th>#</th> -->
       <th>Nome</th>
       <th>Gênero</th>
       <th>Estado Civil</th>
@@ -46,16 +46,16 @@
   <tbody>
 <?php while ($row = $pessoasList->fetch()):?>
     <tr>
-      <th scope="row"><?php echo $row['id'] ?></th>
+      <!-- <th scope="row"><?php echo $row['id'] ?></th> -->
       <td><?php echo $row['nome'] ?></td>
       <td><?php echo $row['genero'] ?></td>
       <td><?php echo $row['estado_civil'] ?></td>
-      <td>
-          <button type="button" class="btn btn-danger" onclick="excluirItem(<?php echo $row['id'] ?>);">
+      <td class="actions">
+          <button type="button" class="btn btn-sm btn-danger" onclick="excluirItem(<?php echo $row['id'] ?>);">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
           </button>
-          <button type="button" class="btn btn-primary" href="index.php?controller=pessoas&action=edit&id=<?php echo $row['id'] ?>" data-target="#default-modal" data-toggle="modal">
-              <i class="fa fa-edit" aria-hidden="true"></i>
+          <button type="button" class="btn btn-sm btn-primary" href="index.php?controller=pessoas&action=edit&id=<?php echo $row['id'] ?>" data-target="#default-modal" data-toggle="modal">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </button>
       </td>
     </tr>

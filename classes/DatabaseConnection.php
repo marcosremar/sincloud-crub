@@ -4,6 +4,10 @@ class DatabaseConnection {
      private $_connection;
      private static $_instance;
 
+    //  private $_dbhost = "localhost";
+    //  private $_dbusername = "id2265652_sincloud";
+    //  private $_dbpassword = "123456";
+    //  private $_dbdatabase = "id2265652_sincloud";
      private $_dbhost = "127.0.0.1";
      private $_dbusername = "homestead";
      private $_dbpassword = "secret";
