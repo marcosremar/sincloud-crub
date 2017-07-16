@@ -1,8 +1,4 @@
-<div class="modal-header">
-    <h4 class="modal-title" id="modalLabel">Adicionar Item</h4>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
 
-</div>
 
 <div class="modal-body">
     <form action="<?php echo $formUrl;?>" id="create-pessoas" method="POST">
