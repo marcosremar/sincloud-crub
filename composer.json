@@ -1,0 +1,14 @@
+{
+    "name": "sincloud/crud",
+    "description": "Interview Test",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Marcos",
+            "email": "marcosremar@gmail.com"
+        }
+    ],
+    "require": {
+        "jasongrimes/paginator": "~1.0"
+    }
+}
