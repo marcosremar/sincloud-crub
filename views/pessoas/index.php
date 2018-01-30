@@ -1,15 +1,3 @@
-<?php
-
-
-
-// $paginator = new Paginator('10','p');
-//pass number of records to
-// $paginator->set_total($stmt->rowCount());
-
-// $stmt 	= $pdo->prepare($sql);
-// $stmt->execute();
-// die(print_r($paginator->page_links(),1));
-?>
 <div id="top" class="row top-buffer">
     <div class="col-md-4">
         <h3>Lista de Pessoas</h3>
@@ -27,7 +15,6 @@
              </div>
          </form>
     </div>
-
     <div class="col-md-4">
         <a href="index.php?controller=pessoas&action=create" data-target="#default-modal" data-toggle="modal" class="btn btn-primary pull-right h2">Novo Item</a>
     </div>
@@ -38,8 +25,11 @@
     <tr>
       <!-- <th>#</th> -->
       <th>Nome</th>
-      <th>Gênero</th>
-      <th>Estado Civil</th>
+      <th>Telefone</th>
+      <th>Estado</th>
+      <th>Cidade</th>
+      <th>Formação Academica</th>
+      <th>Pretensão Salarial</th>
       <th>Ações</th>
     </tr>
   </thead>
@@ -47,9 +37,12 @@
 <?php while ($row = $pessoasList->fetch()):?>
     <tr>
       <!-- <th scope="row"><?php echo $row['id'] ?></th> -->
-      <td><?php echo $row['nome'] ?></td>
-      <td><?php echo $row['genero'] ?></td>
-      <td><?php echo $row['estado_civil'] ?></td>
+      <td><?php echo $row['nome'];?></td>
+      <td><?php echo $row['telefone'];?></td>
+      <td><?php echo $row['uf'];?></td>
+      <td><?php echo $row['localidade'];?></td>
+      <td><?php echo $row['formacao_academica_descricao'];?></td>
+      <td><?php echo $row['pretensao_salarial'];?></td>
       <td class="actions">
           <button type="button" class="btn btn-sm btn-danger" onclick="excluirItem(<?php echo $row['id'] ?>);">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -84,6 +77,7 @@
   </div>
 </div> <!-- /.modal -->
 
+
 <ul class="pagination pagination-lg justify-content-end">
     <?php if ($paginator->getPrevUrl()): ?>
         <li class="page-item"><a class="page-link" href="<?php echo $paginator->getPrevUrl(); ?>">&laquo; Anterior</a></li>
@@ -104,31 +98,89 @@
     <?php endif; ?>
 </ul>
 
+<script>
 
+$(function(){
 
-<!-- <script>
-$('#create-pessoas').on('submit', function(event){
-    console.log('dsdsds');
-    event.preventDefault();
-    $.ajax({
-        url: $(form).attr('action'),
-        type: "POST",
-        data: new FormData($(form)),
-        cache: false,
-        processData: false,
-        success: function(data) {
-            $('#loading').hide();
-            $("#message").html(data);
-        }
+  $('#default-modal').on('shown.bs.modal', function(){
+    console.log('herere');
+    // add search address functionaly
+    $("[name=cep]").on('change', function(){ console.log('dssdds');
+        var cep = $(this).val();
+        $.getJSON( "http://viacep.com.br/ws/"+cep+"/json/", function( data ) {
+            $("[name=logradouro]").val(data.logradouro);
+            $("[name=complemento]").val(data.complemento);
+            $("[name=bairro]").val(data.bairro);
+            $("[name=localidade]").val(data.localidade);
+            $("[name=uf]").val(data.uf);
+        });
     });
-}); -->
+  });
+
+});
+
+function btnSaveModal()
+{
+    // Validation
+        var errors = 0;
+        // nome
+        var $nome = $('#create-pessoas [name^=nome]');
+        if($($nome).val())
+          $($nome).css('border', '1px solid #ccc');
+        else{
+          $($nome).css('border', '1px solid #FF0000');
+          ++errors;
+        }
+
+        // idade
+        var $idade = $('#create-pessoas [name^=idade]');
+        if($($idade).val())
+          $($idade).css('border', '1px solid #ccc');
+        else{
+          $($idade).css('border', '1px solid #FF0000');
+          ++errors;
+        }
+        // telefone
+        var $telefone = $('#create-pessoas [name^=telefone]');
+        if($($telefone).val())
+          $($telefone).css('border', '1px solid #ccc');
+        else{
+          $($telefone).css('border', '1px solid #FF0000');
+          ++errors;
+        }
+        // pretensao salarial
+        var $pretensao_salarial = $('#create-pessoas [name^=pretensao_salarial]');
+        if($($pretensao_salarial).val())
+          $($pretensao_salarial).css('border', '1px solid #ccc');
+        else{
+          $($pretensao_salarial).css('border', '1px solid #FF0000');
+          ++errors;
+        }
+        // formacao academica
+        var $formacao_academica_id = $('#create-pessoas [name^=formacao_academica_id] option:selected');
+        if($($formacao_academica_id).val())
+          $($formacao_academica_id).css('border', '1px solid #ccc');
+        else{
+          $($formacao_academica_id).css('border', '1px solid #FF0000');
+          ++errors;
+        }
+        // cep
+        var $cep = $('#create-pessoas [name^=cep]');
+        if($($cep).val())
+          $($cep).css('border', '1px solid #ccc');
+        else{
+          $($cep).css('border', '1px solid #FF0000');
+          ++errors;
+        }
+        if(! errors){
+          $("#create-pessoas").submit();
+        }
+  }
+</script>
+
 <script>
     function excluirItem(id){
         $('#form-delete-item [name=id]').val(id);
         $('#delete-modal').modal();
     }
-
-    // $(document).on('show.bs.modal','#default-modal',function(event){
-    //       console.log('Modal opened', $(event.relatedTarget).attr('href'));
-    //   });
 </script>

@@ -11,7 +11,11 @@ $('body').on('click', '[data-toggle="modal"]', function(){
         $html = $(data).filter('.modal-footer').html();
         $($this.data("target")+' .modal-footer').html($html);
 
+        if (callbackModal && typeof callbackModal === 'function') {
+            callbackModal();
+        }
     });
+    
 });
 $(function(){
     $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){

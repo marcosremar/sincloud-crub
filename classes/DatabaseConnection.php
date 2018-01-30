@@ -7,7 +7,7 @@ class DatabaseConnection {
      private $_dbhost = "127.0.0.1";
      private $_dbusername = "root";
      private $_dbpassword = "";
-     private $_dbdatabase = "sincloud-crud";
+     private $_dbdatabase = "db-crud";
 
      private function __construct() {
 

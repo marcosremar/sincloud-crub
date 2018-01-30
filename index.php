@@ -9,9 +9,11 @@ $request = new HttpRequest();
 $request->setBaseUrl('http://localhost/sincloud-crud');
 $request->createRequest();
 
+/*
 echo $request->getControllerClassName(); // return controller name. Controller name separated by '-' is going to be converted to camel case.
 var_dump ($request->getParameters());    // print all other parameters $_GET & $_POST
 die($request->getControllerClassName());
+*/
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     $controller = $_GET['controller'];

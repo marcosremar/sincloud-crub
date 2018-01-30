@@ -22,7 +22,7 @@
   // just a list of the controllers we have and their actions
   // we're adding an entry for the new controller and its actions
   $controllers = array('pages' => ['error'],
-                       'pessoas' => ['index', 'create', 'edit', 'store', 'update', 'destroy']);
+                       'pessoas' => ['index', 'create', 'edit', 'store', 'update', 'destroy', 'formacaoAcademicaReport', 'faixaEtariaReport']);
 
   // check that the requested controller and action are both allowed
   // if someone tries to access something else he will be redirected to the error action of the pages controller
